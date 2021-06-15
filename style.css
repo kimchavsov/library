@@ -163,8 +163,10 @@ p {
 }
 
 .remove-btn {
+  width: 80px;
   height: 30px;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .remove-btn:hover {
@@ -211,5 +213,10 @@ p {
   .btn {
       width: 60px;
       height: 25px;
+  }
+  .remove-btn {
+    width: 80px;
+    height:30px;
+    font-size: 15px;
   }
 }
