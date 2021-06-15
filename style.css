@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #222831;
+  color: #EEEEEE;
+}
+
+#container {
+  text-align: center;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 20%;
+  display: block;
+  margin: 20px;
+  padding: 5px;
+  word-wrap: break-word;
+  background-color: #393E46;
+}
+
+.form-popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  font-size: 20px;
+}
+
+/* Add styles to the form container */
+.form-container {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+  color: #222831;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.book-title {
+  font-size: 30px;
+  color: #EAEAEA;
+  font-weight: bold;
+}
+
+/* Style button */
+#btn-add-new {
+  width: 100px;
+  height: 50px;
+  background-color: #00ADB5;
+  border: none;
+  color: #EEEEEE;
+}
+.btn {
+  width: 80px;
+  height: 20px;
+  background-color: #FF2E63;
+  font: 5px;
+  font-weight: 800;
+  border: none;
+}
+
+.remove-btn:hover {
+  background-color: #cf0a3c;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    display: block;
+    margin: 20px;
+  }
+  .form-container {
+    width: 50%;
+  }
+}
