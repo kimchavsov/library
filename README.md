@@ -2,7 +2,7 @@
 The project for [The Odin Project](https://www.theodinproject.com/dashboard).
 
 ## About
-A book collection manager, where we can add, remove, and update reading status.
+A book collection manager, where we can add, remove, and update reading status.\
 Live Demo: [Here]('#')
 
 ## Focus
