@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const container = document.querySelector('#container');
 const addNew = document.querySelector('#btn-add-new')
 const btnClose = document.querySelector('#btn-close')
@@ -44,7 +44,7 @@ function showBook(item) {
   h3.textContent = `${item.title}`;
   h3.classList.add("book-title");
   p1.innerHTML = `Author: ${item.author}`;
-  p2.innerHTML = `Page: ${item.book}`;
+  p2.innerHTML = `Page: ${item.page}`;
 
   toggleRead(!item.status, readBtn, item);
 
@@ -59,6 +59,7 @@ function showBook(item) {
   removeBtn.addEventListener('click', () => {
     const index = myLibrary.indexOf(item)
     myLibrary.splice(index, 1)
+    updateLocalStorage()
     updateBook()
   })
 
@@ -84,10 +85,14 @@ function toggleRead(condi, readBtn, item) {
 // Get book to show up in card
 function updateBook() {
   clearBook();
+  checkLocalStorage()
   for (let book of myLibrary) {
     showBook(book)
   }
 }
+
+// Run to check if book exist
+updateBook()
 
 // Function to clear book from the self inorder to update the new book
 function clearBook() {
@@ -119,7 +124,22 @@ btnAddbook.addEventListener('click', () => {
     return
   }
   const book = addNewBook(titleForm.value, authorForm.value, pageForm.value, statusForm.checked);
-  updateBook()
+  updateLocalStorage();
+  updateBook();
   document.getElementById("myForm").style.display = "none";
-  emptyForm()
+  emptyForm();
 })
+
+// Local Storage
+// Set the local storage to be myLibrary
+function updateLocalStorage() {
+  // Assign array to the storage
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+// Check if there is a local library that consist of library
+function checkLocalStorage() { 
+  if (localStorage.getItem('library')) {
+    myLibrary = JSON.parse(localStorage.getItem('library'))
+  }
+}
