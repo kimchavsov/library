@@ -8,17 +8,18 @@ const btnAddbook = document.querySelector('#btn-add')
 const titleForm = document.getElementById('title');
 const authorForm = document.getElementById('author');
 const pageForm = document.getElementById('page');
-
+const statusForm = document.getElementById('status')
 // Object constructor to create book
-function Book(title, author, page) {
+function Book(title, author, page, status) {
   this.title = title;
   this.author = author;
   this.page = page;
+  this.status = status;
 }
 
 // Add new book to the library
-function addNewBook(title, author, page) {
-  let book = new Book(title, author, page);
+function addNewBook(title, author, page, status) {
+  let book = new Book(title, author, page, status);
   myLibrary.push(book)
   return book
 }
@@ -32,6 +33,10 @@ function showBook(item) {
   const p2 = document.createElement('p')
   
   const removeBtn = document.createElement('button')
+  const readBtn = document.createElement('button')
+  
+  readBtn.classList.add('btn-read-status')
+
   removeBtn.classList.add('btn')
   removeBtn.classList.add('remove-btn')
   removeBtn.innerHTML = 'Remove';
@@ -41,10 +46,13 @@ function showBook(item) {
   p1.innerHTML = `Author: ${item.author}`;
   p2.innerHTML = `Page: ${item.book}`;
 
+  toggleRead(!item.status, readBtn, item);
+
   div.appendChild(h3);
   div.appendChild(p1);
   div.classList.add('card');
   div.appendChild(p2);
+  div.appendChild(readBtn)
   div.appendChild(removeBtn)
   container.appendChild(div);
 
@@ -53,6 +61,24 @@ function showBook(item) {
     myLibrary.splice(index, 1)
     updateBook()
   })
+
+  readBtn.addEventListener('click', () => {
+    toggleRead(readBtn.classList.contains('read'), readBtn, item);
+  })
+}
+
+// Set the 'Read' status
+function toggleRead(condi, readBtn, item) {
+  if (condi) {
+    readBtn.classList.remove('read');
+    readBtn.innerHTML = 'NOT READ';
+    item.status = false;
+  } else {
+    readBtn.classList.add('read');
+    readBtn.innerHTML = 'READ';
+    item.status = true
+  }
+  return readBtn;
 }
 
 // Get book to show up in card
@@ -88,8 +114,12 @@ btnClose.addEventListener('click', () => {
 
 // Button to create new book
 btnAddbook.addEventListener('click', () => {
-  const book = addNewBook(titleForm.value, authorForm.value, pageForm.value);
-  remove = updateBook()
+  if (titleForm.value === '' || authorForm.value === '') {
+    alert('Please, fill all the fields')
+    return
+  }
+  const book = addNewBook(titleForm.value, authorForm.value, pageForm.value, statusForm.checked);
+  updateBook()
   document.getElementById("myForm").style.display = "none";
   emptyForm()
 })

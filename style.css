@@ -1,3 +1,52 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* Css reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Code start here */
 * {
   box-sizing: border-box;
 }
@@ -9,23 +58,44 @@ body {
   color: #EEEEEE;
 }
 
+h1 {
+  height: 80px;
+  font-size: 50px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #393E46;
+  margin: 0;
+  padding-top: 10px;
+  border: none;
+}
+
 #container {
   text-align: center;
   padding: 0 10px;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 20%;
-  display: block;
   margin: 20px;
   padding: 5px;
   word-wrap: break-word;
   background-color: #393E46;
 }
 
+h3 {
+  padding: 10px 0;
+}
+
+p {
+  padding: 10px 0;
+  font-weight: 400;
+}
 .form-popup {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -42,7 +112,10 @@ body {
 
 /* Add styles to the form container */
 .form-container {
-  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e4e2e2;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -51,12 +124,31 @@ body {
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container input[type=text], .form-container input[type=password]{
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
+}
+
+.form-container input[type=checkbox] {
+  display: inline;
+  width: 30%;
+  height: 15px;
+  border: none;
+  background: #f1f1f1;
+}
+
+.status-sect {
+  display: flex;
+}
+
+.btn-sect {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  margin: 5px;
 }
 
 .book-title {
@@ -72,18 +164,58 @@ body {
   background-color: #00ADB5;
   border: none;
   color: #EEEEEE;
+  margin-top: 20px;
 }
+
 .btn {
-  width: 80px;
-  height: 20px;
+  width: 100px;
+  height: 50px;
   background-color: #FF2E63;
   font: 5px;
   font-weight: 800;
   border: none;
+  border-radius: 5px;
+}
+
+#btn-add {
+  background-color: #abf79c;
+}
+
+.remove-btn {
+  height: 30px;
+  margin-bottom: 10px;
 }
 
 .remove-btn:hover {
   background-color: #cf0a3c;
+}
+
+.btn-read-status {
+  width: 100px;
+  height: 30px;
+  background-color: #da9797;
+  font: 5px;
+  font-weight: 800;
+  border: none;
+  margin: 10px;
+}
+
+.read {
+  background-color: #d3ffcd;
+}
+
+.status {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+@media screen and (max-width: 1000px) {
+  .btn {
+    width: 80px;
+    height:30px;
+  }  
 }
 
 @media screen and (max-width: 600px) {
@@ -94,5 +226,9 @@ body {
   }
   .form-container {
     width: 50%;
+  }
+  .btn {
+      width: 60px;
+      height: 25px;
   }
 }
