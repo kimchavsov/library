@@ -17,11 +17,18 @@ function Book(title, author, page, status) {
   this.status = status;
 }
 
+Book.prototype.toggleStatus = function(condi) {
+  if (condi) {
+    this.status = false;
+  } else {
+    this.status = true;
+  }
+};
+
 // Create a constructor function
 function Library() {
   //Library Storage
   this.myLibrary = []
-
 }
 
 // Add new book to the library
@@ -94,11 +101,11 @@ Library.prototype.toggleRead = function(condi, readBtn, item) {
   if (condi) {
     readBtn.classList.remove('read');
     readBtn.innerHTML = 'NOT READ';
-    item.status = false;
+    item.toggleStatus(condi);
   } else {
     readBtn.classList.add('read');
     readBtn.innerHTML = 'READ';
-    item.status = true
+    item.toggleStatus(condi);
   }
 };
 
@@ -141,12 +148,12 @@ btnAddbook.addEventListener('click', () => {
 // Set the local storage to be myLibrary
 function updateLocalStorage() {
   // Assign array to the storage
-  localStorage.setItem('library', JSON.stringify(library.myLibrary));
+  localStorage.setItem('mylibrary', JSON.stringify(library.myLibrary));
 }
 
 // Check if there is a local library that consist of library
 function checkLocalStorage() { 
-  if (localStorage.getItem('library')) {
+  if (localStorage.getItem('myibrary')) {
     library.myLibrary = JSON.parse(localStorage.getItem('library'))
   }
 }
